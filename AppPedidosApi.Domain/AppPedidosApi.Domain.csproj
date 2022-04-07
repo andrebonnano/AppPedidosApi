@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Auditations\AuditationUserData.cs~RF5c2eff.TMP" />
+    <None Remove="Entities\Orders\OrderItem.cs~RF476d47.TMP" />
+  </ItemGroup>
+
 </Project>

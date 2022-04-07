@@ -3,26 +3,26 @@
     public class Auditation
     {
         public Guid Id { get; private set; } = Guid.NewGuid();
-        public AuditationUserData Insert { get; private set; } = new AuditationUserData();
-        public List<AuditationUserData> Edit { get; private set; } = new List<AuditationUserData>();
+        public AuditationUserData AuditInsert { get; private set; } = new AuditationUserData();
+        public List<AuditationUserData> AuditEditList { get; private set; } = new List<AuditationUserData>();
 
 
         public Auditation()
         {
-            Insert.UserId = Id;
-            Insert.Moment = DateTime.Now;
-            Insert.AuditationId = Id;
-            Edit.Add(Insert);
+            AuditInsert.UserId = Id;
+            AuditInsert.Moment = DateTime.Now;
+            AuditInsert.AuditationId = Id;
+            AuditEditList.Add(AuditInsert);
         }
 
         public AuditationUserData GetInsertData()
         {
-            return Insert;
+            return AuditInsert;
         }
 
         public List<AuditationUserData> GetEditData()
         {
-            return Edit;
+            return AuditEditList;
         }
 
         public void AddEditData(Guid userId)
@@ -31,7 +31,7 @@
             data.UserId = userId;
             data.Moment = DateTime.Now;
             data.AuditationId=Id;
-            Edit.Add(data);
+            AuditEditList.Add(data);
         }
     }
 }

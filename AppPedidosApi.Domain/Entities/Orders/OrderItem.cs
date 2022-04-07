@@ -8,14 +8,21 @@ namespace AppPedidosApi.Domain.Entities.Orders
         public Guid OrderId { get; private set; }
         public Product Product { get; private set; }
         public int Quantity { get; private set; }
-        public double TotalPrice { get; private set; }
 
-        public OrderItem(Product product, int quantity, Guid orderId)
+        public OrderItem()
         {
-            Product = product;
-            Quantity = quantity;
+        }
+
+        public void AddProduct(Guid orderId, Product product, int qty)
+        {
             OrderId = orderId;
-            TotalPrice = product.Price * quantity;
+            Product = product;
+            Quantity = qty;
+        }
+
+        public double GetTotalPrice()
+        {
+            return Product.Price * Quantity;
         }
     }
 }

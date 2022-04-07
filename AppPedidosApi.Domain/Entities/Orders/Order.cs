@@ -9,21 +9,25 @@ namespace AppPedidosApi.Domain.Entities.Orders
         public DateTime Date { get; private set; }
         public Guid CustomerId { get; private set; }
         public Guid AddressId { get; private set; }
-        public List<OrderItem> Items { get; private set; }
+        public List<OrderItem> Items { get; private set; } = new();
         public OrderStatus Status { get; private set; }
 
-        public Order(Guid customer, Guid addressId)
+        public Order()
         {
-            CustomerId = customer;
+        }
+
+        public Order(Guid customerId, Guid addressId)
+        {
+            CustomerId = customerId;
             AddressId = addressId;
             Status = OrderStatus.Created;
             Date = DateTime.Now;
-            Items = new List<OrderItem>();
         }
 
         public void AddItem(Product product, int quantity)
         {
-            OrderItem item = new(product, quantity, Id);
+            OrderItem item = new();
+            item.AddProduct(Id, product, quantity);
             Items.Add(item);
 
             AddEditData(CustomerId);
@@ -36,12 +40,7 @@ namespace AppPedidosApi.Domain.Entities.Orders
 
         public double GetTotalPrice()
         {
-            double sum = 0;
-            foreach (var item in Items)
-            {
-                sum += item.Product.Price;
-            }
-            return sum;
+            return GetTotalPrice();
         }
     }
 }

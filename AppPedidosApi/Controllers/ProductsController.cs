@@ -39,10 +39,10 @@ namespace AppPedidosApi.Controllers
 
 
         [HttpPost(Name = "AddProduct")]
-        public string Add(Product product)
+        public Product Add(Product product)
         {
             products.Add(product);
-            return "Produto adicionado com sucesso!";
+            return product;
         }
     }
 }

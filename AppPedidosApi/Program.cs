@@ -22,8 +22,8 @@ if (app.Environment.IsDevelopment())
 
 // ///////////////////////////////////////////////////// //
 Customer pessoa = new("André", "andre@bonnano.com.br", "284.349.448-63", "11 96631-1221", "123456");
-Address endereco = new("Minha Casa", "Rua das Cegonhas, 208", "Ap. 302", "Pedra Branca", "Palhoça", "SC", "Brasil");
-Address endereco2 = new("Meu escritório", "Rua das Cegonhas, 208", "Ap. 302", "Pedra Branca", "Palhoça", "SC", "Brasil");
+Address endereco = new(pessoa.Id, "Minha Casa", "Rua das Cegonhas, 208", "Ap. 302", "Pedra Branca", "Palhoça", "SC", "Brasil");
+Address endereco2 = new(pessoa.Id, "Meu escritório", "Rua das Cegonhas, 208", "Ap. 302", "Pedra Branca", "Palhoça", "SC", "Brasil");
 pessoa.AddAdress(endereco, pessoa.Id);
 pessoa.AddAdress(endereco2, pessoa.Id);
 
@@ -35,13 +35,13 @@ pedido.AddItem(produto2, 1);
 
 foreach (var item in pedido.Items)
 {
-    Console.WriteLine(item.Product.Name);
+    Console.WriteLine(item.GetTotalPrice());
 }
 
 pedido.AddItem(produto2, 4);
 
-Console.WriteLine("Criado em: " + pedido.Insert.Moment);
-foreach (var item in pedido.Edit)
+Console.WriteLine("Criado em: " + pedido.AuditInsert.Moment);
+foreach (var item in pedido.AuditEditList)
 {
     Console.WriteLine("Editado em: " + item.Moment);
 }
