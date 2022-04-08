@@ -14,7 +14,6 @@ namespace AppPedidosApi.Domain.Entities.Users
         public void ChangeStatus(AccessCodes status, Guid userId)
         {
             AccessCode = status;
-            AddEditData(userId);
         }
 
     }

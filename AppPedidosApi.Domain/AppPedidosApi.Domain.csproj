@@ -11,4 +11,8 @@
     <None Remove="Entities\Orders\OrderItem.cs~RF476d47.TMP" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Auditations\" />
+  </ItemGroup>
+
 </Project>

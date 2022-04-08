@@ -40,11 +40,6 @@ foreach (var item in pedido.Items)
 
 pedido.AddItem(produto2, 4);
 
-Console.WriteLine("Criado em: " + pedido.AuditInsert.Moment);
-foreach (var item in pedido.AuditEditList)
-{
-    Console.WriteLine("Editado em: " + item.Moment);
-}
 // /////////////////////////////////////////////////// //
 
 app.UseHttpsRedirection();

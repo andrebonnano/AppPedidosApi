@@ -1,9 +1,10 @@
-﻿using AppPedidosApi.Domain.Auditations;
+﻿
 
 namespace AppPedidosApi.Domain.Entities.Products
 {
-    public class Product : Auditation
+    public class Product
     {
+        public Guid Id { get; private set; } = Guid.NewGuid();
         public string Name { get; private set; }
         public string Description { get; private set; }
         public double Price { get; private set; }
@@ -20,7 +21,6 @@ namespace AppPedidosApi.Domain.Entities.Products
         public void Deactivate(Guid userId)
         {
             IsActive = false;
-            AddEditData(userId);
         }
 
         public void Update(string name, string description, double price, Guid userId)
@@ -29,7 +29,6 @@ namespace AppPedidosApi.Domain.Entities.Products
             Description = description;
             Price = price;
             IsActive = true;
-            AddEditData(userId);
         }
     }
 }

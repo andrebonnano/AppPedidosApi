@@ -16,7 +16,7 @@
         public void AddAdress(Address address, Guid userId)
         {
             Adresses.Add(address);
-            AddEditData(userId);
+            //AddEditData(userId);
         }
 
         public List<Address> GetAddresses()

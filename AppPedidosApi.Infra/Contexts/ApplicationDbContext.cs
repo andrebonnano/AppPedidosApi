@@ -1,5 +1,4 @@
-﻿using AppPedidosApi.Domain.Auditations;
-using AppPedidosApi.Domain.Entities.Orders;
+﻿using AppPedidosApi.Domain.Entities.Orders;
 using AppPedidosApi.Domain.Entities.Products;
 using AppPedidosApi.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +12,12 @@ namespace AppPedidosApi.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<Auditation> Auditations { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                "Data Source=localhost;Initial Catalog=AppPedidosApi;Persist Security Info=True;User ID=sa;Password=123456",
+                "Data Source=.,1433;Initial Catalog=pedidos;Persist Security Info=True;User ID=sa;Password=Bonano@1980;Pooling=False",
                 options => options.EnableRetryOnFailure(
                      maxRetryCount: 2,
                      maxRetryDelay: TimeSpan.FromSeconds(2),

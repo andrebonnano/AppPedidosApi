@@ -1,14 +1,13 @@
-﻿using AppPedidosApi.Domain.Auditations;
+﻿
 
 namespace AppPedidosApi.Domain.Entities.Users
 {
-    public class User : Auditation
+    public class User
     {
-
+        public Guid Id { get; private set; } = Guid.NewGuid();
         public string Name { get; private set; }
         public string Email { get; private set; }
         public bool Active { get; private set; }
-        public List<DateTime> LoginCount { get; private set; } = new List<DateTime>();
         public string Password { get; private set; }
 
 
@@ -18,12 +17,6 @@ namespace AppPedidosApi.Domain.Entities.Users
             Email = email;
             Active = true;
             Password = password;
-        }
-
-        public void AddLoginCount()
-        {
-            DateTime count = DateTime.Now;
-            LoginCount.Add(count);
         }
 
         public void Desctivate()

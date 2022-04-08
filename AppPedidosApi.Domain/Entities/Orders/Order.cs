@@ -1,11 +1,12 @@
-﻿using AppPedidosApi.Domain.Auditations;
+﻿
 using AppPedidosApi.Domain.Entities.Products;
 using AppPedidosApi.Domain.Enums;
 
 namespace AppPedidosApi.Domain.Entities.Orders
 {
-    public class Order : Auditation
+    public class Order 
     {
+        public Guid Id { get; private set; } = Guid.NewGuid();
         public DateTime Date { get; private set; }
         public Guid CustomerId { get; private set; }
         public Guid AddressId { get; private set; }
@@ -30,7 +31,6 @@ namespace AppPedidosApi.Domain.Entities.Orders
             item.AddProduct(Id, product, quantity);
             Items.Add(item);
 
-            AddEditData(CustomerId);
         }
 
         public List<OrderItem> GetAllProducts()
