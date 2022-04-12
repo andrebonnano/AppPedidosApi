@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppPedidosApi.Application.Interfaces.Users
 {
-    internal interface IEmployeeRepo
+    public interface IEmployeeRepo
     {
         Task<Employee> GetEmployeeByIdAsync(Guid id);
         Task<List<Employee>> GetEmployeeAllAsync();

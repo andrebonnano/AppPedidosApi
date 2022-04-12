@@ -7,9 +7,11 @@ namespace AppPedidosApi.Infra.Repositories
     public class ProductRepo : IProductRepo
     {
         ApplicationDbContext _db = new ApplicationDbContext();
+
         public Product AddProduct(Product newProduct)
         {
             _db.Products.Add(newProduct);
+            _db.SaveChanges();
             return newProduct;
         }
 
@@ -17,6 +19,7 @@ namespace AppPedidosApi.Infra.Repositories
         {
             Product prod = _db.Products.FirstOrDefault(p => p.Id == id);
             prod.Deactivate();
+            _db.SaveChanges();
             return $"Produto {prod.Name} está desativado!";
         }
 
@@ -31,9 +34,13 @@ namespace AppPedidosApi.Infra.Repositories
             return _db.Products.FirstOrDefault(p => p.Id == id);
         }
 
-        public Product UpdateProduct(Guid id)
+        public Product UpdateProduct(Guid id, Product product)
         {
-            throw new NotImplementedException();
+            Product prod = _db.Products.FirstOrDefault(p => p.Id == id);
+            prod = product;
+            _db.SaveChanges();
+            return prod;
+
         }
     }
 }

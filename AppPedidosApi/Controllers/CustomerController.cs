@@ -11,9 +11,9 @@ namespace AppPedidosApi.Controllers
     public class CustomersController : ControllerBase
     {
 
-        Customer pessoa1 = new("André", "andre@bonnano.com.br", "284.349.448-63", "11 96631-1221", "123456");
+        /*Customer pessoa1 = new("André", "andre@bonnano.com.br", "284.349.448-63", "11 96631-1221", "123456");
         Customer pessoa2 = new("Mari", "mari@bonnano.com.br", "312.715.828-99", "11 96621-3663", "123456");
-        List<Customer> pessoas = new();
+        List<Customer> pessoas = new();*/
 
         private readonly ILogger<CustomersController> _logger;
         private readonly ICustomerRepo _customerRepo;
@@ -23,12 +23,12 @@ namespace AppPedidosApi.Controllers
             _logger = logger;
             _customerRepo = customerRepo;
             
-            Address endereco = new(pessoa1.Id, "Minha Casa", "Rua das Cegonhas, 208", "Ap. 302", "Pedra Branca", "Palhoça", "SC", "Brasil");
+            /*Address endereco = new(pessoa1.Id, "Minha Casa", "Rua das Cegonhas, 208", "Ap. 302", "Pedra Branca", "Palhoça", "SC", "Brasil");
             Address endereco2 = new(pessoa2.Id, "Meu escritório", "Rua das Cegonhas, 208", "Ap. 302", "Pedra Branca", "Palhoça", "SC", "Brasil");
             pessoa1.AddAdress(endereco);
             pessoa2.AddAdress(endereco2);
             pessoas.Add(pessoa1);
-            pessoas.Add(pessoa2);
+            pessoas.Add(pessoa2);*/
         }
 
         [HttpGet(Name = "GetCustomers")]
@@ -39,12 +39,12 @@ namespace AppPedidosApi.Controllers
         }
 
         [HttpGet("{email}", Name = "GetCustomer")]
-        public Customer GetOne([FromRoute] string email)
+        /*public Customer GetOne([FromRoute] string email)
         {
             var customer = pessoas.FirstOrDefault(p => p.Email == email);
 
             return customer!;
-        }
+        }*/
 
         [HttpPost(Name = "AddCustomer")]
         public Customer Add(Customer customer)

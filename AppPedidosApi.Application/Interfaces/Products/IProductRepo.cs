@@ -12,7 +12,7 @@ namespace AppPedidosApi.Application.Interfaces.Products
         Product GetProductById(Guid id);
         List<Product> GetProductAll();
         Product AddProduct(Product newProduct);
-        Product UpdateProduct(Guid id);
+        Product UpdateProduct(Guid id, Product product);
         String DisableProduct(Guid id);
     }
 }
