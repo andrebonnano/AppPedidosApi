@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\Orders\" />
+    <Folder Include="Requests\" />
     <Folder Include="Responses\" />
   </ItemGroup>
 

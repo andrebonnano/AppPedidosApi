@@ -18,37 +18,37 @@ namespace AppPedidosApi.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetAllProducts")]
-        public List<Product> GetAll()
-        {
-            return _productRepo.GetProductAll();
-        }
-
-        [HttpGet("{id}", Name = "GetProduct")]
-        public Product GetOne([FromRoute] Guid id)
-        {
-            return _productRepo.GetProductById(id);
-        }
-
-        [HttpPost("{id}", Name = "DisableProduct")]
-        public String DisableProduct([FromRoute] Guid id)
-        {
-            _productRepo.DisableProduct(id);
-            return $"Produto está desativado!";
-        }
-
-        [HttpPost(Name = "AddProduct")]
+        [HttpPost("Add", Name = "AddProduct", Order = 1)]
         public Product Add(Product product)
         {
             _productRepo.AddProduct(product);
             return product;
         }
 
-        [HttpPut("{id}", Name = "EditProduct")]
+        [HttpPut("Edit/{id}", Name = "EditProduct", Order = 2)]
         public Product Edit([FromRoute] Guid id, [FromBody] Product product)
         {
             _productRepo.UpdateProduct(id, product);
             return product;
+        }
+
+        [HttpPost("Disable/{id}", Name = "DisableProduct", Order = 3)]
+        public String DisableProduct([FromRoute] Guid id)
+        {
+            _productRepo.DisableProduct(id);
+            return $"Produto está desativado!";
+        }
+
+        [HttpGet("GetAll", Name = "GetAllProducts", Order = 4)]
+        public List<Product> GetAll()
+        {
+            return _productRepo.GetProductAll();
+        }
+
+        [HttpGet("Get/{id}", Name = "GetProduct", Order = 5)]
+        public Product GetOne([FromRoute] Guid id)
+        {
+            return _productRepo.GetProductById(id);
         }
     }
 }

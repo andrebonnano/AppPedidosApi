@@ -19,14 +19,14 @@ namespace AppPedidosApi.Controllers
 
         }
 
-        [HttpPost(Name = "AddAddress")]
+        [HttpPost("Add", Name = "AddAddress")]
         public Address AddAddress([FromBody] Address address)
         {
             _addressRepo.AddAddress(address);
             return address;
         }
 
-        [HttpGet("{id}", Name ="GetUserAdresses")]
+        [HttpGet("GetFrom/{id}", Name ="GetUserAdresses")]
         public List<Address> GetUserAdresses([FromRoute] Guid id)
         {
             return _addressRepo.GetAddressByUserId(id);

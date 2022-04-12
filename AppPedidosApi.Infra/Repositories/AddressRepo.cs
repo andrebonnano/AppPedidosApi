@@ -6,7 +6,7 @@ namespace AppPedidosApi.Infra.Repositories
 {
     public class AddressRepo : IAddressRepo
     {
-        ApplicationDbContext _db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         public Address AddAddress(Address address)
         {

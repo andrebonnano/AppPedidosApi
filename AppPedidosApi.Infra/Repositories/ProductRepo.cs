@@ -6,7 +6,7 @@ namespace AppPedidosApi.Infra.Repositories
 {
     public class ProductRepo : IProductRepo
     {
-        ApplicationDbContext _db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         public Product AddProduct(Product newProduct)
         {

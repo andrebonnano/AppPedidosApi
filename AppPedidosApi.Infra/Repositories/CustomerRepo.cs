@@ -1,5 +1,4 @@
-﻿
-using AppPedidosApi.Application.Interfaces.Users;
+﻿using AppPedidosApi.Application.Interfaces.Users;
 using AppPedidosApi.Context;
 using AppPedidosApi.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
@@ -8,40 +7,35 @@ namespace AppPedidosApi.Infra.Repositories
 {
     public class CustomerRepo : ICustomerRepo
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
-        public CustomerRepo(ApplicationDbContext context)
+        public Customer AddCustomer(Customer newCustomer)
         {
-            _context = context;
-        }
-
-        public async Task<Customer> AddCustomerAsync(Customer newCustomer)
-        {
-            _context.Customers.Add(newCustomer);
-            await _context.SaveChangesAsync();
+            _db.Customers.Add(newCustomer);
+            _db.SaveChangesAsync();
             return newCustomer;
         }
-        public async Task<Customer> UpdateCustomerAsync(Customer customer)
+        public Customer UpdateCustomer(Customer customer)
         {
-            _context.Customers.Attach(customer);
-            _context.Entry(customer).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            _db.Customers.Attach(customer);
+            _db.Entry(customer).State = EntityState.Modified;
+            _db.SaveChangesAsync();
             return customer;
         }
 
-        public async Task<List<Customer>> GetCustomerAllAsync()
+        public List<Customer> GetCustomerAll()
         {
-            return await _context.Customers.ToListAsync();
+            return _db.Customers.ToList();
         }
 
-        public async Task<Customer> GetCustomerByEmailAsync(string email)
+        public Customer GetCustomerByEmail(string email)
         {
-            return await _context.Customers.FirstAsync(x => x.Email == email);
+            return _db.Customers.First(x => x.Email == email);
         }
 
-        public async Task<Customer> GetCustomerByIdAsync(Guid id)
+        public Customer GetCustomerById(Guid id)
         {
-            return await _context.Customers.FirstAsync(x => x.Id == id);
+            return _db.Customers.First(x => x.Id == id);
         }
 
     }
