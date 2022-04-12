@@ -21,7 +21,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AppPedidosApi.Application\AppPedidosApi.Application.csproj" />
     <ProjectReference Include="..\AppPedidosApi.Domain\AppPedidosApi.Domain.csproj" />
-    <ProjectReference Include="..\AppPedidosApi\AppPedidosApi.csproj" />
   </ItemGroup>
 
 </Project>

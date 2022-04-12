@@ -24,14 +24,15 @@ if (app.Environment.IsDevelopment())
 Customer pessoa = new("André", "andre@bonnano.com.br", "284.349.448-63", "11 96631-1221", "123456");
 Address endereco = new(pessoa.Id, "Minha Casa", "Rua das Cegonhas, 208", "Ap. 302", "Pedra Branca", "Palhoça", "SC", "Brasil");
 Address endereco2 = new(pessoa.Id, "Meu escritório", "Rua das Cegonhas, 208", "Ap. 302", "Pedra Branca", "Palhoça", "SC", "Brasil");
-pessoa.AddAdress(endereco, pessoa.Id);
-pessoa.AddAdress(endereco2, pessoa.Id);
+pessoa.AddAdress(endereco);
+pessoa.AddAdress(endereco2);
 
 Order pedido = new(pessoa.Id, pessoa.Adresses[0].Id);
 Product produto1 = new("Computador", "Computador de ultima geração", 2540.90);
 Product produto2 = new("Notebook", "Notebook mais fino", 3820.70);
 pedido.AddItem(produto1, 2);
 pedido.AddItem(produto2, 1);
+
 
 foreach (var item in pedido.Items)
 {

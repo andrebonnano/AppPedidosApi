@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AppPedidosApi.Infra.Repositories
 {
-    internal class CustomerRepo : ICustomerRepo
+    public class CustomerRepo : ICustomerRepo
     {
         private readonly ApplicationDbContext _context;
 
@@ -15,13 +15,13 @@ namespace AppPedidosApi.Infra.Repositories
             _context = context;
         }
 
-        public async Task<Customer> AddAsync(Customer newCustomer)
+        public async Task<Customer> AddCustomerAsync(Customer newCustomer)
         {
             _context.Customers.Add(newCustomer);
             await _context.SaveChangesAsync();
             return newCustomer;
         }
-        public async Task<Customer> UpdateAsync(Customer customer)
+        public async Task<Customer> UpdateCustomerAsync(Customer customer)
         {
             _context.Customers.Attach(customer);
             _context.Entry(customer).State = EntityState.Modified;
@@ -29,17 +29,17 @@ namespace AppPedidosApi.Infra.Repositories
             return customer;
         }
 
-        public async Task<List<Customer>> GetAllAsync()
+        public async Task<List<Customer>> GetCustomerAllAsync()
         {
             return await _context.Customers.ToListAsync();
         }
 
-        public async Task<Customer> GetByEmailAsync(string email)
+        public async Task<Customer> GetCustomerByEmailAsync(string email)
         {
             return await _context.Customers.FirstAsync(x => x.Email == email);
         }
 
-        public async Task<Customer> GetByIdAsync(Guid id)
+        public async Task<Customer> GetCustomerByIdAsync(Guid id)
         {
             return await _context.Customers.FirstAsync(x => x.Id == id);
         }

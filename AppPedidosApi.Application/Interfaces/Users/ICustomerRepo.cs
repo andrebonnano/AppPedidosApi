@@ -9,11 +9,11 @@ namespace AppPedidosApi.Application.Interfaces.Users
 {
     public interface ICustomerRepo
     {
-        Task<Customer> GetByEmailAsync(string email);
-        Task<Customer> GetByIdAsync(Guid id);
-        Task<List<Customer>> GetAllAsync();
-        Task<Customer> AddAsync(Customer newCustomer);
-        Task<Customer> UpdateAsync(Customer customer);
+        Task<Customer> GetCustomerByEmailAsync(string email);
+        Task<Customer> GetCustomerByIdAsync(Guid id);
+        Task<List<Customer>> GetCustomerAllAsync();
+        Task<Customer> AddCustomerAsync(Customer newCustomer);
+        Task<Customer> UpdateCustomerAsync(Customer customer);
 
 
     }

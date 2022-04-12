@@ -13,10 +13,9 @@
             Phone = phone;
         }
 
-        public void AddAdress(Address address, Guid userId)
+        public void AddAdress(Address address)
         {
             Adresses.Add(address);
-            //AddEditData(userId);
         }
 
         public List<Address> GetAddresses()
