@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace AppPedidosApi.Application.Interfaces.Products
 {
-    internal interface IProductRepo
+    public interface IProductRepo
     {
-        Task<Product> GetProductByIdAsync(Guid id);
-        Task<Product> GetProductByNameAsync(string name);
-        Task<List<Product>> GetProductAllAsync();
-        Task<Product> AddProductAsync(Product newProduct);
-        Task<Product> UpdateProductAsync(Guid id);
-        Task<Product> DisableProductAsync(Guid id);
+        Product GetProductById(Guid id);
+        List<Product> GetProductAll();
+        Product AddProduct(Product newProduct);
+        Product UpdateProduct(Guid id);
+        String DisableProduct(Guid id);
     }
 }

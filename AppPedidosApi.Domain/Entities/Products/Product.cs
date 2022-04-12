@@ -18,12 +18,12 @@ namespace AppPedidosApi.Domain.Entities.Products
             IsActive = true;
         }
 
-        public void Deactivate(Guid userId)
+        public void Deactivate()
         {
             IsActive = false;
         }
 
-        public void Update(string name, string description, double price, Guid userId)
+        public void Update(string name, string description, double price)
         {
             Name = name;
             Description = description;

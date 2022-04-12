@@ -8,7 +8,7 @@ namespace AppPedidosApi.Infra.Repositories
 {
     public class CustomerRepo : ICustomerRepo
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context = new ApplicationDbContext();
 
         public CustomerRepo(ApplicationDbContext context)
         {
